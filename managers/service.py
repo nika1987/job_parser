@@ -60,7 +60,7 @@ class VacancyService:
         :return:объект вакансии с наивысшей зарплатой
         """
         self._last_result = [
-            max(self._all_vacancies, key=lambda x: x.payment_from)
+            max(self._all_vacancies)
         ]
 
         return self._get_serialized(self._last_result)
@@ -71,7 +71,7 @@ class VacancyService:
         :return: объект вакансии с наименьшей зарплатой
         """
         self._last_result = [
-            min(self._all_vacancies, key=lambda x: x.payment_from)
+            min(self._all_vacancies)
         ]
         return self._get_serialized(self._last_result)
 
