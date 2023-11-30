@@ -45,10 +45,13 @@ class SuperJobAPI(BaseParser):
         """
         vacancies = []
         for item in data:
-            vacancy = self._vacancy(id=item['id'], title=item['profession'], url=item['link'],
+            try:
+                vacancy = self._vacancy(id=item['id'], title=item['profession'], url=item['link'],
                                    payment_from=item['payment_from'], payment_to=item['payment_to'],
                                    description=item['candidat'], city=item['town']['title'])
-            vacancies.append(vacancy)
+                vacancies.append(vacancy)
+            except Exception as e:
+                pass
         return vacancies
 
     def get_by_keyword(self, keyword: str) -> list[Vacancy]:
